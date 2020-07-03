@@ -1,15 +1,20 @@
-const modal = document.getElementById('modal_main');
+const start = document.getElementById('modal_main');
 const success = document.getElementById('modal_success');
-const save = modal.className;
+const close = Array.from(document.getElementsByClassName('modal__close'));
 
-modal.className = 'modal modal_active';
-const close = document.getElementsByClassName('modal__close');
-close[1].onclick = function(){
-  modal.className =save;
-  success.className = 'modal modal_active';
-  console.log(modal.className);
+start.className = 'modal modal_active';
+
+let timerId = setInterval(() =>
+  {success.classList.add('modal_active');
+  clearInterval(timerId);}
+  ,2000);
+
+close.forEach((b) => {
+  b.addEventListener('click', handler)
+})
+
+function handler(){
+  this.closest(".modal").classList.remove("modal_active");
+  //start.classList.toggle('modal_active');
+  //success.classList.toggle('modal_active');
 }
-close[2].onclick = function(){
-  success.className = save;
-}
-console.log(modal.className);
