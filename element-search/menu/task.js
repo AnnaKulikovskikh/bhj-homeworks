@@ -1,20 +1,13 @@
 const link = Array.from(document.querySelectorAll('.menu__link'));
-const submit = Array.from(document.querySelectorAll('.menu_sub'));
-console.log(link.length);
-//console.log(submit[0].className);
-//console.log(submit.length);
 
 function handler() {
-  console.log(this.textContent);
-  if (this.textContent == "О компании"){
-    submit[1].className ="menu menu_sub";
-    submit[0].className ="menu menu_sub menu_active";
+  if (document.querySelector('.menu_active') != null) {
+    document.querySelector('.menu_active').classList.remove('menu_active');
   }
-  if (this.textContent == "Услуги"){
-    submit[0].className ="menu menu_sub";
-    submit[1].className ="menu menu_sub menu_active";
-  }
-
+  if (this.nextElementSibling != null) {
+    this.nextElementSibling.classList.add('menu_active');
+    event.preventDefault();
+  } 
 }
 
 link.forEach((b) => {
