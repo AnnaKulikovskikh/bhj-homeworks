@@ -22,7 +22,6 @@ class Game {
         return this.success();
       } else {
         return this.fail();
-        }
       }
    });  
     /*
