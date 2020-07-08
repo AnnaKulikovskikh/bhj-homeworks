@@ -4,10 +4,11 @@ class Game {
     this.wordElement = container.querySelector('.word');
     this.winsElement = container.querySelector('.status__wins');
     this.lossElement = container.querySelector('.status__loss');
+    //this.p = container.querySelector('.timer');
 
     this.reset();
-
     this.registerEvents();
+    this.timer();
   }
 
   reset() {
@@ -16,7 +17,7 @@ class Game {
     this.lossElement.textContent = 0;
   }
 
-  registerEvents() {
+  timer(){
     const p = document.getElementById('timer');
     let timerId = setInterval(() => {
       let m = Number(p.textContent);
@@ -26,13 +27,14 @@ class Game {
         return this.fail();
         }
   }, 1000);
+
+  }
+  
+  registerEvents() {
     document.addEventListener('keydown', (event) => {
-      p.textContent = 10;
       if (event.key == this.currentSymbol.textContent) {
-        console.log('true');
         return this.success();
         } else {
-          console.log('false');
           return this.fail();
         }
     });
@@ -49,6 +51,8 @@ class Game {
       alert('Победа!');
       this.reset();
     }
+    const p = document.getElementById('timer');
+    p.textContent = 10;
     this.setNewWord();
   }
 
@@ -57,6 +61,8 @@ class Game {
       alert('Вы проиграли!');
       this.reset();
     }
+    const p = document.getElementById('timer');
+    p.textContent = 10;
     this.setNewWord();
   }
 
