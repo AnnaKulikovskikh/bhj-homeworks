@@ -17,20 +17,15 @@ class Game {
   }
 
   registerEvents() {
-    document.addEventListener('keydown', function(event) {
-      if (event.key == this.currentSymbol) {
+    document.addEventListener('keydown', (event) => {
+      if (event.key == this.currentSymbol.textContent) {
+        console.log('true');
         return this.success();
       } else {
+        console.log('false');
         return this.fail();
       }
-   });  
-    /*
-      TODO:
-      Написать обработчик события, который откликается
-      на каждый введённый символ.
-      В случае правильного ввода слова вызываем this.success()
-      При неправильном вводе символа - this.fail();
-     */
+    });
   }
 
   success() {
@@ -93,5 +88,4 @@ class Game {
   }
 }
 
-new Game(document.getElementById('game'))
-
+new Game(document.getElementById('game'));
