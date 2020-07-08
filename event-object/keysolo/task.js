@@ -17,14 +17,24 @@ class Game {
   }
 
   registerEvents() {
+    const p = document.getElementById('timer');
+    let timerId = setInterval(() => {
+      let m = Number(p.textContent);
+      p.textContent = m - 1;
+      if (m == 1) {
+        p.textContent = 10;;
+        return this.fail();
+        }
+  }, 1000);
     document.addEventListener('keydown', (event) => {
+      p.textContent = 10;
       if (event.key == this.currentSymbol.textContent) {
         console.log('true');
         return this.success();
-      } else {
-        console.log('false');
-        return this.fail();
-      }
+        } else {
+          console.log('false');
+          return this.fail();
+        }
     });
   }
 
